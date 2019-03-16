@@ -1,0 +1,22 @@
+2019-04-17
+
+got a simple test script to return content of example.com
+
+using wallabag 2.4 cuz it's php 7
+chromium-php requires php 7
+
+tried using other wallabags, but not obvious how it works
+
+wallabag 2.4 gives error about loading app.php
+_maybe_ because I had a custom app.php file? maybe yes, removed it.
+
+getting error about mailer_port. some configs not updating correctly.
+started container with /bin/ash, manually edited /var/www/wallabag/app/config/config.yml
+to change mailer_port and mailer_encryption to static values
+
+now getting database table creation error. probably sqlite doesn't
+come pre-setup. should just connect a fake mysql instance probably
+
+sudo docker build -t burkemw3/wallabag-chrome:dev .
+sudo docker run -p 8293:80 -it --rm burkemw3/wallabag-chrome:dev /bin/ash
+http://canis-minor.local:8293
